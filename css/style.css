@@ -1,0 +1,656 @@
+/*------------------------------------------------------------------
+Project:  HYDR Official Website
+Version:  Unknown
+Last change:  
+Assigned to:  Haidar Bahzi
+Primary use:  HYDR Website
+-------------------------------------------------------------------*/
+
+/* Root Styling */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  list-style: none;
+  cursor: url("/cursor/cursor.cur"), auto;
+}
+
+@font-face {
+  font-family: Kusanagi;
+  src: url(/Fonts/Kusanagi.woff);
+}
+
+section {
+  width: 100%;
+  min-height: 110vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Custom ScrollBar */
+
+::-webkit-scrollbar {
+  width: 1vh;
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
+@supports (scrollbar-color: red blue) {
+  * {
+    scrollbar-color: white black;
+    scrollbar-width: thin;
+  }
+}
+
+/* For Javascript */
+
+.hidden {
+  opacity: 0;
+  transition: 0.5s all;
+}
+
+.hideSlide {
+  opacity: 0;
+  transform: translateX(-100%);
+  filter: blur(5px);
+  transition: 0.5s all;
+}
+
+.show {
+  opacity: 1;
+}
+
+.showSlide {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+/* Loading Page */
+
+#loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  position: fixed;
+  z-index: 2;
+}
+
+.rotate-parent {
+  border: 5px solid transparent;
+  border-top-color: white;
+  border-bottom-color: white;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.75);
+  animation: rotate 2s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate-child {
+  border: 5px solid transparent;
+  border-top-color: white;
+  border-bottom-color: white;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.75);
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* Navigation Bar */
+
+nav {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  background-image: url(/Images/space-stars.gif);
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: monospace;
+  text-align: center;
+  transition: 0.5s all;
+}
+
+.nav-links:hover a {
+  color: white;
+}
+
+.nav-links:hover a:not(:hover) {
+  color: white;
+  opacity: 0.5;
+  filter: blur(0.5px);
+}
+
+.nav-links-mobile {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+}
+
+.nav-links-mobile a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Navigation Bar Responsive */
+
+@media (max-width: 50em) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links-mobile {
+    display: flex;
+  }
+}
+
+/* Home Page */
+
+#Home {
+  gap: 5vh;
+}
+
+.home-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: white;
+  font-size: 70px;
+  font-family: Kusanagi;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+#home-btn {
+  padding: 10px;
+  width: 200px;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+  border: 2.5px solid white;
+  background: linear-gradient(to right, transparent 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: 0.25s all;
+}
+
+#home-btn:hover {
+  background-position: bottom left;
+  color: white;
+}
+
+/* Home Responsive */
+
+@media (max-width: 50em) {
+  .home-title {
+    font-size: 35px;
+  }
+
+  #home-btn {
+    width: 150px;
+    padding: 7.5px;
+    font-size: 15px;
+  }
+}
+
+/* About Page */
+
+#About {
+  padding-top: 15vh;
+  gap: 20vh;
+}
+
+.about-container {
+  display: inherit;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.about-text {
+  max-width: 100%;
+  width: 50%;
+  color: white;
+}
+
+.about-text span {
+  font-size: 65px;
+  font-family: Kusanagi;
+}
+
+.about-text p {
+  font-size: 22px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+.about-container-service {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10vh;
+}
+
+.service-item {
+  width: 350px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-item:nth-child(2) {
+  transition-delay: 250ms;
+}
+
+.service-item:nth-child(3) {
+  transition-delay: 500ms;
+}
+
+.service-item img {
+  width: 100px;
+}
+
+.service-item-text {
+  color: white;
+  text-align: center;
+  padding-top: 7.5px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.service-item-text span {
+  font-size: 40px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.service-item-text p {
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+/* About Page Responsive */
+
+@media (max-width: 50em) {
+  .about-container {
+    flex-direction: column-reverse;
+  }
+
+  .about-container img {
+    width: 75%;
+  }
+
+  .about-text {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .about-text span {
+    font-size: 45px;
+  }
+
+  .about-text p {
+    font-size: 18px;
+  }
+
+  .about-container-service {
+    flex-direction: column;
+  }
+
+  .service-item-text span {
+    font-size: 45px;
+  }
+
+  .service-item-text p {
+    font-size: 16px;
+  }
+}
+
+/* Achievement Page */
+
+#Achievement {
+  padding-top: 15vh;
+}
+
+.achievement-title {
+  text-align: center;
+  color: white;
+  font-size: 35px;
+  font-family: Kusanagi;
+}
+
+.achievement-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.achievement-container img {
+  max-width: 100%;
+  width: 50%;
+  padding: 10px;
+}
+
+.achievement-container-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.achievement-container-item:nth-child(2) {
+  transition-delay: 250ms;
+}
+
+@media (max-width: 50em) {
+  .achievement-container {
+    flex-direction: column;
+  }
+
+  .achievement-container img {
+    width: 100%;
+  }
+}
+
+/* Project Page */
+
+#Project {
+  padding-top: 15vh;
+  gap: 10vh;
+}
+
+.project-title {
+  text-align: center;
+  color: white;
+  font-size: 35px;
+  font-family: Kusanagi;
+}
+
+.project-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5vh;
+}
+
+.project-container:nth-child(2) {
+  transition-delay: 250ms;
+}
+
+.project-item {
+  width: 1150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+}
+
+.project-item img {
+  width: 650px;
+  padding: 5px;
+}
+
+.project-item-text {
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+}
+
+.project-item-text span {
+  color: crimson;
+  font-family: monospace;
+  font-size: 22px;
+}
+
+.project-item-text h1 {
+  font-family: Kusanagi;
+  font-size: 35px;
+}
+
+.project-item-text p {
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+.project-item-text button {
+  font-size: 18px;
+  width: 150px;
+  padding: 7.5px;
+  border: 2.5px solid crimson;
+  color: white;
+  background: linear-gradient(to left, transparent 50%, crimson 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: 0.25s all;
+}
+
+.project-item-text button:hover {
+  background-position: bottom right;
+  color: white;
+}
+
+/* Project Page Responsive */
+
+@media (max-width: 50em) {
+  .project-item {
+    flex-direction: column;
+    width: 95%;
+    min-height: fit-content;
+  }
+
+  .project-item img {
+    width: 105%;
+  }
+}
+
+/* Contact Page */
+
+#Contact {
+  gap: 10vh;
+  padding-bottom: 30vh;
+}
+
+.contact-title {
+  text-align: center;
+  color: white;
+  font-size: 35px;
+  font-family: Kusanagi;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10vh;
+}
+
+form {
+  width: 555px;
+  color: white;
+  display: flex;
+  gap: 2.5vh;
+  flex-direction: column;
+}
+
+.input {
+  display: flex;
+  height: 50px;
+}
+
+.input span {
+  background-color: white;
+  color: black;
+  font-family: Kusanagi;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+}
+
+form [type="text"],
+form [type="email"],
+textarea {
+  background-color: transparent;
+  outline: none;
+  transition: 0.25s all;
+  font-size: 20px;
+  width: 100%;
+  color: white;
+  border: 2.5px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+}
+
+textarea {
+  height: 250px;
+}
+
+form [type="text"]:focus,
+form [type="email"]:focus,
+textarea:focus {
+  border-color: aqua;
+}
+
+form [type="submit"] {
+  width: 145px;
+  height: 50px;
+  font-size: 18px;
+  font-family: Kusanagi;
+  background-color: white;
+  border: 2px solid white;
+  color: black;
+  background: linear-gradient(to right, transparent 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: 0.25s all;
+}
+
+form [type="submit"]:hover {
+  background-position: bottom left;
+  color: white;
+}
+
+.result {
+  width: 555px;
+  height: 250px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5vh;
+  flex-direction: column;
+  border: 2px solid white;
+  text-align: center;
+  font-size: 30px;
+  font-family: monospace;
+}
+
+/* Contact Page Responsive */
+
+@media (max-width: 50em) {
+  #Contact {
+    padding-top: 10vh;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+
+  form {
+    width: 100%;
+    padding: 0 7.5px;
+    gap: 10vh;
+  }
+
+  .result {
+    display: none;
+  }
+
+  .input {
+    flex-direction: column;
+  }
+
+  .input span {
+    width: 50%;
+  }
+
+  form [type="text"],
+  form [type="email"] {
+    width: 100%;
+    padding: 10px;
+  }
+
+  textarea {
+    min-height: 100px;
+  }
+}
