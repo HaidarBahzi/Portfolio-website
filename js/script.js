@@ -78,11 +78,30 @@ formInput.addEventListener("submit", (e) => {
 function sendToSheets() {
   fetch(scriptURL, { method: "POST", body: new FormData(formInput) })
     .then((response) => {
-      (result.innerHTML = "Thanks, we are receiving your message :)"), (result.style.borderColor = "green"), formInput.reset();
+      if (screen.width <= "800") {
+        alert("Thanks, we are receiving your message :)");
+      } else {
+        successToSend();
+      }
     })
     .catch((error) => {
-      (result.innerHTML = "Sorry, we cannot receive your message :("), (result.style.borderColor = "red");
+      if (screen.width <= "800") {
+        alert("Sorry, we cannot receive your message :(");
+      } else {
+        failToSend();
+      }
     });
 }
 
-/* Test */
+function successToSend() {
+  (result.innerHTML = "Thanks, we are receiving your message :)"), (result.style.borderColor = "green"), formInput.reset();
+}
+
+function failToSend() {
+  (result.innerHTML = "Sorry, we cannot receive your message :("), (result.style.borderColor = "red");
+}
+
+/* Copyright Year */
+let yearNow = new Date().getFullYear();
+
+document.querySelector(".year").innerHTML = " " + yearNow + " ";
