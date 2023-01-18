@@ -593,6 +593,8 @@ form [type="submit"] {
   background-size: 200% 100%;
   background-position: right bottom;
   transition: 0.25s all;
+  position: relative;
+  top: 126px;
 }
 
 form [type="submit"]:hover {
@@ -668,25 +670,6 @@ footer {
   background-color: black;
 }
 
-.footer-profile {
-  font-size: 50px;
-  font-family: Kusanagi;
-}
-
-.footer-profile a {
-  text-decoration: none;
-  color: inherit;
-  transition: 0.5s all;
-}
-
-.haidar:hover {
-  color: crimson;
-}
-
-.aaron:hover {
-  color: green;
-}
-
 .footer-main {
   display: flex;
   gap: 1vh;
@@ -696,7 +679,4 @@ footer {
 }
 
 @media (max-width: 50em) {
-  footer {
-    flex-direction: column;
-  }
 }
