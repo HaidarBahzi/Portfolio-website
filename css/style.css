@@ -594,7 +594,8 @@ form [type="submit"] {
   background-position: right bottom;
   transition: 0.25s all;
   position: relative;
-  top: 126px;
+  top: 120px;
+  left: 405px;
 }
 
 form [type="submit"]:hover {
