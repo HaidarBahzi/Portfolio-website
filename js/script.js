@@ -82,6 +82,7 @@ function sendToSheets() {
         alert("Thanks, we are receiving your message :)");
       } else {
         successToSend();
+        setTimeout(defaultBackForm, 5000);
       }
     })
     .catch((error) => {
@@ -89,9 +90,12 @@ function sendToSheets() {
         alert("Sorry, we cannot receive your message :(");
       } else {
         failToSend();
+        setTimeout(defaultBackForm, 5000);
       }
     });
 }
+
+let defaultForm = result.innerHTML;
 
 function successToSend() {
   (result.innerHTML = "Thanks, we are receiving your message :)"), (result.style.borderColor = "green"), formInput.reset();
@@ -99,6 +103,10 @@ function successToSend() {
 
 function failToSend() {
   (result.innerHTML = "Sorry, we cannot receive your message :("), (result.style.borderColor = "red");
+}
+
+function defaultBackForm() {
+  (result.innerHTML = defaultForm), (result.style.borderColor = "white");
 }
 
 /* Copyright Year */
